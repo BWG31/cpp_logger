@@ -57,7 +57,9 @@ void Logger::closeLogfile()
 
 void Logger::msg(const std::string &msg)
 {
-	m_logfile << msg;
+	if (!m_logfile.is_open())
+		return;
+	m_logfile << msg << std::endl;
 }
 //  ========| VIRTUAL METHODS |=========
 //  ======| EXTERNAL FUNCTIONS |========

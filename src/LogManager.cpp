@@ -38,11 +38,13 @@ const Logger &LogManager::getAccessLog() const { return m_accessLog; };
 void LogManager::error(const std::string &msg)
 {
     m_errorLog.msg(msg);
+    std::cerr << msg << std::endl;
 }
 
 void LogManager::access(const std::string &msg)
 {
     m_accessLog.msg(msg);
+    std::cout << msg << std::endl;
 }
 
 //  ========| VIRTUAL METHODS |=========
