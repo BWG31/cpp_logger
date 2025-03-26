@@ -55,11 +55,11 @@ void Logger::closeLogfile()
 		m_logfile.close();
 }
 
-void Logger::msg(const std::string &msg)
+void Logger::log(const Log &entry)
 {
 	if (!m_logfile.is_open())
 		return;
-	m_logfile << msg << std::endl;
+	m_logfile << entry;
 }
 //  ========| VIRTUAL METHODS |=========
 //  ======| EXTERNAL FUNCTIONS |========

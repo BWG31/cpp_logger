@@ -37,14 +37,16 @@ const Logger &LogManager::getAccessLog() const { return m_accessLog; };
 //  ============| METHODS |=============
 void LogManager::error(const std::string &msg)
 {
-    m_errorLog.msg(msg);
-    std::cerr << msg << std::endl;
+    Log entry(msg);
+    m_errorLog.log(entry);
+    std::cerr << entry;
 }
 
 void LogManager::access(const std::string &msg)
 {
-    m_accessLog.msg(msg);
-    std::cout << msg << std::endl;
+    Log entry(msg);
+    m_accessLog.log(entry);
+    std::cout << entry;
 }
 
 //  ========| VIRTUAL METHODS |=========
