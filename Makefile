@@ -1,6 +1,6 @@
-NAME	=	#executable name
+NAME	=	log
 
-SRC		=	#source files
+SRC		=	main Logger LogManager
 
 INC_DIR		:=	inc/
 SRC_DIR		:=	src/

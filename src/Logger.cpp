@@ -6,7 +6,7 @@ Logger::Logger()
 	// NOT USED
 }
 
-Logger::Logger(const char *logfile) : m_logfilePath(logfile)
+Logger::Logger(const char *logfile)
 {
 	setLogfile(logfile);
 }
@@ -25,10 +25,15 @@ Logger::~Logger()
 //  =======| OPERATOR OVERLOADS |=======
 Logger &Logger::operator=(const Logger &rhs)
 {
-	closeLogfile();
-	m_logfilePath = rhs.getLogfilePath();
-	setLogfile(m_logfilePath.c_str());
+	setLogfile(rhs.getLogfilePath().c_str());
+	return *this;
 }
+
+// void Logger::operator<<(const std::string &str)
+// {
+// 	if (m_logfile.is_open())
+// 		m_logfile << str << std::endl;
+// }
 
 //  ============| GETTERS |=============
 const std::string &Logger::getLogfilePath() const { return m_logfilePath; };
@@ -36,6 +41,8 @@ const std::string &Logger::getLogfilePath() const { return m_logfilePath; };
 //  ============| SETTERS |=============
 void Logger::setLogfile(const char *logfile)
 {
+	closeLogfile();
+	m_logfilePath = logfile;
 	m_logfile.open(logfile, std::ios::app);
 	if (!m_logfile.is_open())
 		std::cerr << "Unable to open logfile: " << logfile << std::endl;
@@ -48,5 +55,9 @@ void Logger::closeLogfile()
 		m_logfile.close();
 }
 
+void Logger::msg(const std::string &msg)
+{
+	m_logfile << msg;
+}
 //  ========| VIRTUAL METHODS |=========
 //  ======| EXTERNAL FUNCTIONS |========
