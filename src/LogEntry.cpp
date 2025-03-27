@@ -2,14 +2,16 @@
 
 //	==========| CONSTRUCTORS / DESTRUCTOR |==========
 LogEntry::LogEntry() :
-	m_timestamp("TIME_GOES_HERE"),
 	m_content("Hello World")
-{}
+{
+	updateTimestamp();
+}
 
 LogEntry::LogEntry(const std::string &content) :
-	m_timestamp("TIME_GOES_HERE"),
 	m_content(content)
-{}
+{
+	updateTimestamp();
+}
 
 LogEntry::LogEntry(const LogEntry &other)
 {
@@ -36,11 +38,20 @@ const std::string &LogEntry::getContent() const { return m_content; };
 
 //	============| SETTERS |=============
 //	============| METHODS |=============
+void LogEntry::updateTimestamp()
+{
+	char		buffer[100];
+	time_t		rawTime = time(NULL);
+	struct tm	*timeInfo = localtime(&rawTime);
+
+	strftime(buffer, 100, "%d/%b/%Y %X", timeInfo);
+	m_timestamp = buffer;
+}
 //	========| VIRTUAL METHODS |=========
 //	======| EXTERNAL FUNCTIONS |========
 std::ostream &operator<<(std::ostream &os, const LogEntry &rhs)
 {
-	os << "[" <<rhs.getTimestamp() << "] " \
+	os << "[" << rhs.getTimestamp() << "] " \
 	<< rhs.getContent() << std::endl;
 	return os;
 }

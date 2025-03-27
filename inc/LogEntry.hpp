@@ -3,6 +3,7 @@
 
 # include <string>
 # include <iomanip>
+# include <ctime>
 
 class LogEntry
 {
@@ -16,6 +17,8 @@ class LogEntry
 
 		const std::string &getTimestamp() const;
 		const std::string &getContent() const;
+
+		void updateTimestamp();
 
 	private:
 		std::string m_timestamp;
