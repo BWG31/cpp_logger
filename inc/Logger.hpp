@@ -23,7 +23,7 @@ class Logger
 
 		void setLogfile(const char *logfile);
 
-		void log(const LogEntry &entry);
+		void log(LogEntry &entry);
 	private:
 		std::ofstream	m_logfile;
 		std::string		m_logfilePath;

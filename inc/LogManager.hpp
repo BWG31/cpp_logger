@@ -34,7 +34,7 @@ class LogManager
 		Logger					m_accessLog;
 		ErrorLogEntry::e_level	m_level;
 
-		void logError(const LogEntry &entry);
+		void logError(const std::string &msg, ErrorLogEntry::e_level lvl);
 };
 
 #endif

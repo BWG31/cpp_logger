@@ -25,8 +25,12 @@ class LogEntry
 	public:
 		std::string m_timestamp;
 		std::string m_content;
+
+	protected:
+		void printTimestamp(std::ostream &os) const;
+		void printContent(std::ostream &os) const;
 };
 
-std::ostream &operator<<(std::ostream &os, const LogEntry &rhs);
+std::ostream &operator<<(std::ostream &os, LogEntry &rhs);
 
 #endif

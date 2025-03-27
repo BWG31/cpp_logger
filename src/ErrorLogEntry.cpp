@@ -47,12 +47,21 @@ std::string ErrorLogEntry::getLevelString() const
 
 //	============| SETTERS |=============
 //	============| METHODS |=============
+void ErrorLogEntry::printLevel(std::ostream &os) const
+{
+	const char LEVEL_FONT[] = "\033[1;31m";
+	const char RESET[] = "\033[0m";
+
+	os << '[' << LEVEL_FONT << getLevelString() << RESET << ']';
+}
+
 //	========| VIRTUAL METHODS |=========
 void ErrorLogEntry::print(std::ostream &os) const
 {
-	os << "[" << getTimestamp() << "] " \
-	<< "[" << getLevelString() << "] " \
-	<< getContent() << std::endl;
+	printTimestamp(os);
+	printLevel(os);
+	printContent(os);
+	os << std::endl;
 }
 
 //	======| EXTERNAL FUNCTIONS |========

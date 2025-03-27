@@ -49,10 +49,12 @@ void Logger::closeLogfile()
 		m_logfile.close();
 }
 
-void Logger::log(const LogEntry &entry)
+void Logger::log(LogEntry &entry)
 {
+	const char *CONTENT_FONT = "\033[3;32m";
 	if (!m_logfile.is_open())
 		return;
+	entry.setContent(std::string(CONTENT_FONT) + entry.getContent() + "\033[0m");
 	m_logfile << entry;
 }
 //  ========| VIRTUAL METHODS |=========

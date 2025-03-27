@@ -37,6 +37,8 @@ const std::string &LogEntry::getTimestamp() const { return m_timestamp; };
 const std::string &LogEntry::getContent() const { return m_content; };
 
 //	============| SETTERS |=============
+void LogEntry::setContent(const std::string &content) { m_content = content; };
+
 //	============| METHODS |=============
 void LogEntry::updateTimestamp()
 {
@@ -48,15 +50,30 @@ void LogEntry::updateTimestamp()
 	m_timestamp = buffer;
 }
 
+void LogEntry::printTimestamp(std::ostream &os) const
+{
+	const char TS_FONT[] = "\033[3m";
+	const char RESET[] = "\033[0m";
+	os << '[' << TS_FONT << getTimestamp() << RESET << ']';
+}
+
+void LogEntry::printContent(std::ostream &os) const
+{
+	const char CONTENT_FONT[] = "\033[32m";
+	const char RESET[] = "\033[0m";
+	os << ' ' << CONTENT_FONT << getContent() << RESET;
+}
+
 //	========| VIRTUAL METHODS |=========
 void LogEntry::print(std::ostream &os) const
 {
-	os << "[" << getTimestamp() << "] " \
-	<< getContent() << std::endl;
+	printTimestamp(os);
+	printContent(os);
+	os << std::endl;
 }
 
 //	======| EXTERNAL FUNCTIONS |========
-std::ostream &operator<<(std::ostream &os, const LogEntry &rhs)
+std::ostream &operator<<(std::ostream &os, LogEntry &rhs)
 {
 	rhs.print(os);
 	return os;

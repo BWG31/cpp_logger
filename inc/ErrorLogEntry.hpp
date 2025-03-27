@@ -27,6 +27,8 @@ class ErrorLogEntry : public LogEntry
 
 	private:
 		e_level m_level;
+	
+		void printLevel(std::ostream &os) const;
 };
 
 #endif
