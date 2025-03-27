@@ -57,7 +57,7 @@ void ErrorLogEntry::printLevel(std::ostream &os) const
 	};
 	static const std::string RESET_FONT = Font(RESET).getFont();
 
-	os << '[' << LEVEL_FONT[getLevel()] << getLevelString() << RESET_FONT << ']';
+	os << " [" << LEVEL_FONT[getLevel()] << getLevelString() << RESET_FONT << ']';
 }
 
 //	========| VIRTUAL METHODS |=========
