@@ -17,7 +17,6 @@ class Logger
 		~Logger();
 		
 		Logger &operator=(const Logger &rhs);
-		// void operator<<(const std::string &str);
 
 		const std::string &getLogfilePath() const;
 
