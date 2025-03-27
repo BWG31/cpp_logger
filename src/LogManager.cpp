@@ -34,23 +34,32 @@ const Logger &LogManager::getErrorLog() const { return m_errorLog; };
 const Logger &LogManager::getAccessLog() const { return m_accessLog; };
 
 //  ============| SETTERS |=============
+void LogManager::setLogLevel(ErrorLogEntry::e_level lvl)
+{
+    m_level = lvl;
+}
+
 //  ============| METHODS |=============
 void LogManager::error(const std::string &msg)
 {
-    logError(ErrorLogEntry(msg, ErrorLogEntry::ERROR));
+    if (m_level <= ErrorLogEntry::ERROR)
+        logError(ErrorLogEntry(msg, ErrorLogEntry::ERROR));
 }
 void LogManager::debug(const std::string &msg)
 {
-    logError(ErrorLogEntry(msg, ErrorLogEntry::DEBUG));
+    if (m_level <= ErrorLogEntry::DEBUG)
+        logError(ErrorLogEntry(msg, ErrorLogEntry::DEBUG));
 }
 void LogManager::info(const std::string &msg)
 {
-    logError(ErrorLogEntry(msg, ErrorLogEntry::INFO));
+    if (m_level <= ErrorLogEntry::INFO)
+        logError(ErrorLogEntry(msg, ErrorLogEntry::INFO));
 }
 
 void LogManager::critical(const std::string &msg)
 {
-    logError(ErrorLogEntry(msg, ErrorLogEntry::CRITICAL));
+    if (m_level <= ErrorLogEntry::CRITICAL)
+        logError(ErrorLogEntry(msg, ErrorLogEntry::CRITICAL));
 }
 
 void LogManager::access(const std::string &msg)
