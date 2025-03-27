@@ -5,6 +5,8 @@
 # include <iomanip>
 # include <ctime>
 
+# include "Font.hpp"
+
 class LogEntry
 {
 	public:

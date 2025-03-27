@@ -1,6 +1,6 @@
 NAME	=	run
 
-SRC		=	main Logger LogManager LogEntry ErrorLogEntry
+SRC		=	main Logger LogManager LogEntry ErrorLogEntry Font Printer
 
 INC_DIR		:=	inc/
 SRC_DIR		:=	src/

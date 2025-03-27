@@ -49,10 +49,15 @@ std::string ErrorLogEntry::getLevelString() const
 //	============| METHODS |=============
 void ErrorLogEntry::printLevel(std::ostream &os) const
 {
-	const char LEVEL_FONT[] = "\033[1;31m";
-	const char RESET[] = "\033[0m";
+	static const std::string	LEVEL_FONT[4] = {
+		Font(MAGENTA).getFont(),
+		Font(CYAN).getFont(),
+		Font(YELLOW).getFont(),
+		Font(RED).getFont()
+	};
+	static const std::string RESET_FONT = Font(RESET).getFont();
 
-	os << '[' << LEVEL_FONT << getLevelString() << RESET << ']';
+	os << '[' << LEVEL_FONT[getLevel()] << getLevelString() << RESET_FONT << ']';
 }
 
 //	========| VIRTUAL METHODS |=========

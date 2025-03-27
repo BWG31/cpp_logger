@@ -52,16 +52,15 @@ void LogEntry::updateTimestamp()
 
 void LogEntry::printTimestamp(std::ostream &os) const
 {
-	const char TS_FONT[] = "\033[3m";
-	const char RESET[] = "\033[0m";
-	os << '[' << TS_FONT << getTimestamp() << RESET << ']';
+	static const std::string TIMESTAMP_FONT = Font(ITALIC).getFont();
+	static const std::string RESET_FONT = Font(RESET).getFont();
+	
+	os << '[' << TIMESTAMP_FONT << getTimestamp() << RESET_FONT << ']';
 }
 
 void LogEntry::printContent(std::ostream &os) const
 {
-	const char CONTENT_FONT[] = "\033[32m";
-	const char RESET[] = "\033[0m";
-	os << ' ' << CONTENT_FONT << getContent() << RESET;
+	os << ' ' << getContent();
 }
 
 //	========| VIRTUAL METHODS |=========
