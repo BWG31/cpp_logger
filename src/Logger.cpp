@@ -55,7 +55,7 @@ void Logger::closeLogfile()
 		m_logfile.close();
 }
 
-void Logger::log(const Log &entry)
+void Logger::log(const LogEntry &entry)
 {
 	if (!m_logfile.is_open())
 		return;

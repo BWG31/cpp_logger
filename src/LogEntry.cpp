@@ -1,29 +1,29 @@
-#include "Log.hpp"
+#include "LogEntry.hpp"
 
 //	==========| CONSTRUCTORS / DESTRUCTOR |==========
-Log::Log() :
+LogEntry::LogEntry() :
 	m_timestamp("TIME_GOES_HERE"),
 	m_content("Hello World")
 {}
 
-Log::Log(const std::string &content) :
+LogEntry::LogEntry(const std::string &content) :
 	m_timestamp("TIME_GOES_HERE"),
 	m_content(content)
 {}
 
-Log::Log(const Log &other)
+LogEntry::LogEntry(const LogEntry &other)
 {
 	if (this != &other)
 		*this = other;
 }
 
-Log::~Log()
+LogEntry::~LogEntry()
 {
 	//	DEFAULT
 }
 
 //	=======| OPERATOR OVERLOADS |=======
-Log &Log::operator=(const Log &rhs)
+LogEntry &LogEntry::operator=(const LogEntry &rhs)
 {
 	m_timestamp = rhs.getTimestamp();
 	m_content = rhs.getContent();
@@ -31,14 +31,14 @@ Log &Log::operator=(const Log &rhs)
 }
 
 //	============| GETTERS |=============
-const std::string &Log::getTimestamp() const { return m_timestamp; };
-const std::string &Log::getContent() const { return m_content; };
+const std::string &LogEntry::getTimestamp() const { return m_timestamp; };
+const std::string &LogEntry::getContent() const { return m_content; };
 
 //	============| SETTERS |=============
 //	============| METHODS |=============
 //	========| VIRTUAL METHODS |=========
 //	======| EXTERNAL FUNCTIONS |========
-std::ostream &operator<<(std::ostream &os, const Log &rhs)
+std::ostream &operator<<(std::ostream &os, const LogEntry &rhs)
 {
 	os << "[" <<rhs.getTimestamp() << "] " \
 	<< rhs.getContent() << std::endl;

@@ -1,6 +1,6 @@
-NAME	=	log
+NAME	=	run
 
-SRC		=	main Logger LogManager Log
+SRC		=	main Logger LogManager LogEntry
 
 INC_DIR		:=	inc/
 SRC_DIR		:=	src/

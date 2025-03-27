@@ -1,7 +1,7 @@
 #ifndef LOGGER_HPP
 # define LOGGER_HPP
 
-# include "Log.hpp"
+# include "LogEntry.hpp"
 
 # include <fstream>
 # include <iostream>
@@ -22,7 +22,7 @@ class Logger
 
 		void setLogfile(const char *logfile);
 
-		void log(const Log &entry);
+		void log(const LogEntry &entry);
 	private:
 		std::ofstream	m_logfile;
 		std::string		m_logfilePath;
