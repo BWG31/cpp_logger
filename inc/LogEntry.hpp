@@ -18,9 +18,11 @@ class LogEntry
 		const std::string &getTimestamp() const;
 		const std::string &getContent() const;
 
-		void updateTimestamp();
+		void setContent(const std::string &content);
 
-	private:
+		void updateTimestamp();
+		virtual void print(std::ostream &os) const;
+	public:
 		std::string m_timestamp;
 		std::string m_content;
 };

@@ -15,7 +15,13 @@ class LogManager
 		const Logger &getErrorLog() const;
 		const Logger &getAccessLog() const;
 
+		// ERROR LOG HANDLERS
 		void error(const std::string &msg);
+		void debug(const std::string &msg);
+		void info(const std::string &msg);
+		void critical(const std::string &msg);
+
+		// ACCESS LOG HANDLERS
 		void access(const std::string &msg);
 
 	private:
@@ -24,6 +30,8 @@ class LogManager
 
 		Logger	m_errorLog;
 		Logger	m_accessLog;
+
+		void logError(const LogEntry &entry);
 };
 
 #endif

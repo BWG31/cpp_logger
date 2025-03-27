@@ -37,9 +37,20 @@ const Logger &LogManager::getAccessLog() const { return m_accessLog; };
 //  ============| METHODS |=============
 void LogManager::error(const std::string &msg)
 {
-    LogEntry entry(msg);
-    m_errorLog.log(entry);
-    std::cerr << entry;
+    logError(ErrorLogEntry(msg, ErrorLogEntry::ERROR));
+}
+void LogManager::debug(const std::string &msg)
+{
+    logError(ErrorLogEntry(msg, ErrorLogEntry::DEBUG));
+}
+void LogManager::info(const std::string &msg)
+{
+    logError(ErrorLogEntry(msg, ErrorLogEntry::INFO));
+}
+
+void LogManager::critical(const std::string &msg)
+{
+    logError(ErrorLogEntry(msg, ErrorLogEntry::CRITICAL));
 }
 
 void LogManager::access(const std::string &msg)
@@ -47,6 +58,12 @@ void LogManager::access(const std::string &msg)
     LogEntry entry(msg);
     m_accessLog.log(entry);
     std::cout << entry;
+}
+
+void LogManager::logError(const LogEntry &entry)
+{
+    m_errorLog.log(entry);
+    std::cerr << entry;
 }
 
 //  ========| VIRTUAL METHODS |=========

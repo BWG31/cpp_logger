@@ -3,7 +3,10 @@
 int main(void)
 {
     LogManager log;
-    log.error("Hello from Error");
+    log.error("Hello from Error => ERROR");
+    log.info("Hello from Error => INFO");
+    log.debug("Hello from Error => DEBUG");
+    log.critical("Hello from Error => CRITICAL");
     log.access("Hello from Access");
     return 0;
 }

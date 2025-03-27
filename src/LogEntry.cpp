@@ -2,7 +2,7 @@
 
 //	==========| CONSTRUCTORS / DESTRUCTOR |==========
 LogEntry::LogEntry() :
-	m_content("Hello World")
+	m_content("Default LogEntry")
 {
 	updateTimestamp();
 }
@@ -47,11 +47,17 @@ void LogEntry::updateTimestamp()
 	strftime(buffer, 100, "%d/%b/%Y %X", timeInfo);
 	m_timestamp = buffer;
 }
+
 //	========| VIRTUAL METHODS |=========
+void LogEntry::print(std::ostream &os) const
+{
+	os << "[" << getTimestamp() << "] " \
+	<< getContent() << std::endl;
+}
+
 //	======| EXTERNAL FUNCTIONS |========
 std::ostream &operator<<(std::ostream &os, const LogEntry &rhs)
 {
-	os << "[" << rhs.getTimestamp() << "] " \
-	<< rhs.getContent() << std::endl;
+	rhs.print(os);
 	return os;
 }

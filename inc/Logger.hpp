@@ -2,6 +2,7 @@
 # define LOGGER_HPP
 
 # include "LogEntry.hpp"
+# include "ErrorLogEntry.hpp"
 
 # include <fstream>
 # include <iostream>

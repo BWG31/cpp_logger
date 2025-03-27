@@ -29,12 +29,6 @@ Logger &Logger::operator=(const Logger &rhs)
 	return *this;
 }
 
-// void Logger::operator<<(const std::string &str)
-// {
-// 	if (m_logfile.is_open())
-// 		m_logfile << str << std::endl;
-// }
-
 //  ============| GETTERS |=============
 const std::string &Logger::getLogfilePath() const { return m_logfilePath; };
 
