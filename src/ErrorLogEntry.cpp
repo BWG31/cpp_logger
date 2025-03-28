@@ -54,7 +54,7 @@ void ErrorLogEntry::printLevel(std::ostream &os) const
 		Font(MAGENTA).getFont(),
 		Font(CYAN).getFont(),
 		Font(RED).getFont(),
-		Font(BOLD | BLINK | YELLOW | BG_RED).getFont()
+		Font(BOLD | BLINK | YELLOW | BRIGHT | BG_RED).getFont()
 	};
 	static const std::string RESET_FONT = Font(RESET).getFont();
 
