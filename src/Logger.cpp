@@ -37,6 +37,7 @@ void Logger::setLogfile(const char *logfile)
 {
 	closeLogfile();
 	m_logfilePath = logfile;
+	createDirectoryPart();
 	m_logfile.open(logfile, std::ios::app);
 	if (!m_logfile.is_open())
 		std::cerr << "Unable to open logfile: " << logfile << std::endl;
@@ -55,5 +56,21 @@ void Logger::log(LogEntry &entry)
 		return;
 	m_logfile << entry;
 }
+
+void Logger::createDirectoryPart() const
+{
+	std::string dir = m_logfilePath.substr(0, m_logfilePath.find_last_of('/'));
+	errno = 0;
+	if (mkdir(dir.c_str(), 0777))
+	{
+		if (errno != EEXIST)
+		{
+			std::cerr << "Unable to create logfile directory part : "\
+			<< std::strerror(errno) << std::endl;
+		}
+		errno = 0;
+	}
+}
+
 //  ========| VIRTUAL METHODS |=========
 //  ======| EXTERNAL FUNCTIONS |========

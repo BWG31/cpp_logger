@@ -1,7 +1,7 @@
 #include "LogManager.hpp"
 
-const char *	LogManager::DEFAULT_ERROR_LOG_PATH = "error.log";
-const char *	LogManager::DEFAULT_ACCESS_LOG_PATH = "access.log";
+const char *	LogManager::DEFAULT_ERROR_LOG_PATH = "logs/error.log";
+const char *	LogManager::DEFAULT_ACCESS_LOG_PATH = "logs/access.log";
 
 //  ==========| CONSTRUCTORS / DESTRUCTOR |==========
 LogManager::LogManager() : m_errorLog(DEFAULT_ERROR_LOG_PATH),

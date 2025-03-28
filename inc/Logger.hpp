@@ -7,6 +7,9 @@
 # include <fstream>
 # include <iostream>
 # include <string>
+# include <sys/stat.h>
+# include <sys/types.h>
+# include <cstring>
 
 class Logger
 {
@@ -28,6 +31,7 @@ class Logger
 		std::string		m_logfilePath;
 	
 		void closeLogfile();
+		void createDirectoryPart() const;
 };
 
 #endif
