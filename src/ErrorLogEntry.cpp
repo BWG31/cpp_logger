@@ -11,7 +11,8 @@ ErrorLogEntry::ErrorLogEntry(const std::string &content, e_level lvl) :
 	m_level(lvl)
 {}
 
-ErrorLogEntry::ErrorLogEntry(const ErrorLogEntry &other)
+ErrorLogEntry::ErrorLogEntry(const ErrorLogEntry &other) :
+	LogEntry(other)
 {
 	if (this != &other)
 		*this = other;
